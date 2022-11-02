@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+  <head>
+  <title>login</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="login.css">
+    <!-- icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   
+<body>
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+    <img src="library.jpg">
+    </div>
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">تسجيل الدخول</div>
+			
+			
+          <form action="logincon.php" method="POST">
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" name="user" placeholder="اسم المستخدم" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="كلمة المرور" required>
+              </div>             
+              <div class="button input-box">
+                <input type="submit" value="تسجيل">
+              </div>
+              <div class="text sign-up-text"> لا تملك حساب؟ <label for="flip"> سجل الان </label></div>
+            </div>
+        </form>
+      </div>
+        <div class="signup-form">
+          <div class="title"> مستخدم جديد </div>
+        <form action="connect.php" method="post">
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" name="user" id="user" placeholder="الاسم " required>
+              </div>
+           
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" id="password" placeholder="كلمة المرور" required>
+              </div>
+              <div class="button input-box">
+                <input type="submit" value="تسجيل">
+              </div>
+              <div class="text sign-up-text"> لديك حساب بالفعل؟ <label for="flip"> سجل الدخول </label></div>
+            </div>
+      </form>
+	  
+    </div>
+    </div>
+    </div>
+  </div>
+ 
+</body>
+</html>

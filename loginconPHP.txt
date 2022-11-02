@@ -1,0 +1,23 @@
+
+ <?php
+session_start();
+
+$con = mysqli_connect('localhost','root','','library');
+
+if(isset($_POST['user'])&&isset($_POST['password'])){
+
+  $userr =$_POST['user'];
+  $password =$_POST['password'];
+
+  $query = " SELECT * FROM login WHERE user='$userr' && password='$password'";
+ if(mysqli_num_rows(mysqli_query($con,$query))>1)
+ {
+	 $_SESSION['user']=$row['user'];
+   header("Location:vBook.php?=success");
+
+ }
+ else{
+	echo"اسم المستخدم او كلمه المرور خطأ";
+ }
+}
+ ?>

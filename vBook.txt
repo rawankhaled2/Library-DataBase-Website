@@ -1,0 +1,96 @@
+<head>
+<meta charset="UTF-8">
+ <title>View</title>
+ <style>
+body{
+      font-family:italic;
+ }
+h2{
+ text-align:center;
+ margin-top:50px;
+ font-size:60px;
+}
+
+table{
+  border-collapse:collapse;
+  margin: 90px 400;
+  font-size: 0.9em;
+  min-width: 500px;
+  border-radius:5px 5px 0 0;
+  overflow:hidden;
+  box-shadow:0 0 20px rgba(0,0,0,0.15);
+}
+table thead tr{
+background-color: #009879;
+color:#ffffff;
+text-align:left;
+font-weight:bold;
+}
+table td{
+padding:12px 15px;
+}
+table tr{
+border-bottom: 1px solid #dddddd;
+}
+table tr:last-of-type{
+   border-bottom: 2px solid #009879;
+}
+tr:hover {background-color: #dddddd;}
+</style>
+</head>
+<body>
+ 
+<div class="background">
+<h2> THE TABLES</h2>
+<hr style="width:50%">
+<?php
+$conn = new mysqli("localhost","root","","library");
+
+#The first query
+$stmt=$conn->prepare("SELECT * FROM vBookStatus ");
+$stmt->execute();
+
+$result=$stmt->get_result();
+
+echo "<table >";
+echo "<thead><tr><td>"." ISBN "."</td> <td>"." B_State "."</td> <td>".
+" B_Auther "."</td> <td>"." Locations "."</td> </thead></tr>";
+
+while ($row =$result->fetch_assoc()){
+    echo "<tr> <td>".$row['isbn']."</td> <td>".$row['B_State']."</td>
+    <td>".$row['B_Auther']."</td>  <td>".$row['Locations']."</td> </tr>";
+}
+echo "</table>";
+
+ # the second query
+$stmt=$conn->prepare("SELECT Snum,Fname,Lname,Salary FROM Staff ");
+$stmt->execute();
+$result=$stmt->get_result();
+
+echo "<table >";
+echo "<thead><tr><td>"."Snum"."</td> <td>"." Fname"."</td> <td>".
+" Lname "."</td> <td>"." Salary "."</td> </thead></tr>";
+
+while ($row =$result->fetch_assoc()){
+    echo "<tr> <td>".$row['Snum']."</td> <td>".$row['Fname']."</td>
+    <td>".$row['Lname']."</td>  <td>".$row['Salary']."</td> </tr>";
+}
+echo "</table>";
+
+# the third query
+ $stmt=$conn->prepare("SELECT B_Title,B_Auther,B_Publisher,B_Copies FROM Book ");
+ $stmt->execute();
+ $result=$stmt->get_result();
+
+ echo "<table >";
+ echo "<thead><tr><td>"."B_Title"."</td> <td>"." B_Auther"."</td> <td>".
+ " B_Publisher "."</td> <td>"." B_Copies "."</td> </thead></tr>";
+ 
+ while ($row =$result->fetch_assoc()){
+     echo "<tr> <td>".$row['B_Title']."</td> <td>".$row['B_Auther']."</td>
+     <td>".$row['B_Publisher']."</td>  <td>".$row['B_Copies']."</td> </tr>";
+ }
+ echo "</table>"
+?></div>
+</body>
+</html>
